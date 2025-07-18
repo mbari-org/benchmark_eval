@@ -1,5 +1,7 @@
 Hi! This is elaine's documentation for creating benchmark datasets and evaluating models using HOTA :)
 
+### Setting up Environment
+Install the benchmark_eval_requirements.txt file (updated their requirements bc of outdated installations). 
 
 ## How to annotate a video in Rectlabel
 
@@ -46,3 +48,21 @@ python scripts/run_mot_challenge.py \
 --BENCHMARK MOT17 \
 --TRACKER_SUB_FOLDER ' '
  ```
+
+### What is HOTA?
+In plain english: metric that measures how well trajectories of detections align, averaged over all trajectories, while also taking into account incorrect detections. 
+- balances association and detection. Previously used MOTA score was biased toward detection and IDF1 score was biased toward association.
+- Made up of 6 secondary metrics:
+  - **DetA (detection accuracy)** - percentage of aligning detections
+  - **AssA (association accuracy)** - average alignment between trajectories, averaged over all detections. Basically how well tracker maintains identity consistency
+  - **DetRe (detection recall)** - how well tracker finds all ground truth detections
+  - **DetPr (detection precision)** - how well tracker manages to NOT predict extra detections that arent there
+  - **AssRe (association recall)** - how well trackers can avoid splitting same object into multiple shorter tracks
+  - **AssPr (association precision)** - how well trackers avoid merging multiple objects into a single track
+  - **LocA (localization accuracy)** - measures spatial accuracy (IoU) between gt/predicted bounding boxes
+
+
+
+
+
+
