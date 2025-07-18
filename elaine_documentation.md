@@ -36,7 +36,7 @@ imWidth=1920
 imHeight=1080
 ```
 - Next, edit the vidseq_names.txt under *benchmark_eval/data/gt/mot_challenge/seqmaps*. The format should have “name” at the top, and then all the video sequences you would like to get the HOTA values for. 
-In the terminal, make sure you are in the benchmark_eval directory and type in this command:
+- Lastly, in the terminal, make sure you are in the benchmark_eval directory and type in this command:
 ```
 python scripts/run_mot_challenge.py \                                                                     
 --GT_FOLDER data/gt/mot_challenge \
