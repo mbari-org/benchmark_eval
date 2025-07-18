@@ -3,7 +3,7 @@ from scipy.optimize import linear_sum_assignment
 from ._base_metric import _BaseMetric
 from .. import _timing
 from .. import utils
-
+#elaine: changed np.float to float and np.int to int
 
 class Identity(_BaseMetric):
     """Class which implements the ID metrics"""
@@ -80,9 +80,9 @@ class Identity(_BaseMetric):
         match_rows, match_cols = linear_sum_assignment(fn_mat + fp_mat)
 
         # Accumulate basic statistics
-        res['IDFN'] = fn_mat[match_rows, match_cols].sum().astype(np.int)
-        res['IDFP'] = fp_mat[match_rows, match_cols].sum().astype(np.int)
-        res['IDTP'] = (gt_id_count.sum() - res['IDFN']).astype(np.int)
+        res['IDFN'] = fn_mat[match_rows, match_cols].sum().astype(int)
+        res['IDFP'] = fp_mat[match_rows, match_cols].sum().astype(int)
+        res['IDTP'] = (gt_id_count.sum() - res['IDFN']).astype(int)
 
         # Calculate final ID scores
         res = self._compute_final_fields(res)

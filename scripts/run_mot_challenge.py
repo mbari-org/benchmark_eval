@@ -17,20 +17,25 @@ Command Line Arguments: Defaults, # Comments
         'OUTPUT_DETAILED': True,
         'PLOT_CURVES': True,
     Dataset arguments:
-        'GT_FOLDER': os.path.join(code_path, 'data/gt/mot_challenge/'),  # Location of GT data
-        'TRACKERS_FOLDER': os.path.join(code_path, 'data/trackers/mot_challenge/'),  # Trackers location
-        'OUTPUT_FOLDER': None,  # Where to save eval results (if None, same as TRACKERS_FOLDER)
-        'TRACKERS_TO_EVAL': None,  # Filenames of trackers to eval (if None, all in folder)
-        'CLASSES_TO_EVAL': ['pedestrian'],  # Valid: ['pedestrian']
-        'BENCHMARK': 'MOT17',  # Valid: 'MOT17', 'MOT16', 'MOT20', 'MOT15'
-        'SPLIT_TO_EVAL': 'train',  # Valid: 'train', 'test', 'all'
-        'INPUT_AS_ZIP': False,  # Whether tracker input files are zipped
-        'PRINT_CONFIG': True,  # Whether to print current config
-        'DO_PREPROC': True,  # Whether to perform preprocessing (never done for 2D_MOT_2015)
-        'TRACKER_SUB_FOLDER': 'data',  # Tracker files are in TRACKER_FOLDER/tracker_name/TRACKER_SUB_FOLDER
-        'OUTPUT_SUB_FOLDER': '',  # Output files are saved in OUTPUT_FOLDER/tracker_name/OUTPUT_SUB_FOLDER
-    Metric arguments:
-        'METRICS': ['HOTA', 'CLEAR', 'Identity', 'VACE']
+    'GT_FOLDER': '/Users/eliu/TrackEval/data/gt/mot_challenge',
+    'TRACKERS_FOLDER': '/Users/eliu/TrackEval/data/trackers/mot_challenge',
+    'SEQMAP_FILE': 'data/gt/mot_challenge/seqmaps/MOT17-train.txt',
+    'SPLIT_TO_EVAL': 'train',
+    'BENCHMARK': 'MOT17'
+#        'GT_FOLDER': os.path.join(code_path, 'data/gt/mot_challenge/'),  # Location of GT data
+#        'TRACKERS_FOLDER': os.path.join(code_path, 'data/trackers/mot_challenge/'),  # Trackers location
+#        'OUTPUT_FOLDER': None,  # Where to save eval results (if None, same as TRACKERS_FOLDER)
+#        'TRACKERS_TO_EVAL': None,  # Filenames of trackers to eval (if None, all in folder)
+#        'CLASSES_TO_EVAL': ['pedestrian'],  # Valid: ['pedestrian']
+#        'BENCHMARK': 'MOT17',  # Valid: 'MOT17', 'MOT16', 'MOT20', 'MOT15'
+#        'SPLIT_TO_EVAL': 'train',  # Valid: 'train', 'test', 'all'
+#        'INPUT_AS_ZIP': False,  # Whether tracker input files are zipped
+#        'PRINT_CONFIG': True,  # Whether to print current config
+#        'DO_PREPROC': True,  # Whether to perform preprocessing (never done for 2D_MOT_2015)
+#        'TRACKER_SUB_FOLDER': 'data',  # Tracker files are in TRACKER_FOLDER/tracker_name/TRACKER_SUB_FOLDER
+#        'OUTPUT_SUB_FOLDER': '',  # Output files are saved in OUTPUT_FOLDER/tracker_name/OUTPUT_SUB_FOLDER
+#    Metric arguments:
+#        'METRICS': ['HOTA', 'CLEAR', 'Identity', 'VACE']
 """
 
 import sys

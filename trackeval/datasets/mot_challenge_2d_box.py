@@ -26,7 +26,7 @@ class MotChallenge2DBox(_BaseDataset):
             'SPLIT_TO_EVAL': 'train',  # Valid: 'train', 'test', 'all'
             'INPUT_AS_ZIP': False,  # Whether tracker input files are zipped
             'PRINT_CONFIG': True,  # Whether to print current config
-            'DO_PREPROC': True,  # Whether to perform preprocessing (never done for MOT15)
+            'DO_PREPROC': False,  # Whether to perform preprocessing (never done for MOT15)
             'TRACKER_SUB_FOLDER': 'data',  # Tracker files are in TRACKER_FOLDER/tracker_name/TRACKER_SUB_FOLDER
             'OUTPUT_SUB_FOLDER': '',  # Output files are saved in OUTPUT_FOLDER/tracker_name/OUTPUT_SUB_FOLDER
             'TRACKER_DISPLAY_NAMES': None,  # Names of trackers to display, if None: TRACKERS_TO_EVAL
@@ -66,6 +66,8 @@ class MotChallenge2DBox(_BaseDataset):
 
         self.tracker_sub_fol = self.config['TRACKER_SUB_FOLDER']
         self.output_sub_fol = self.config['OUTPUT_SUB_FOLDER']
+        #I EDITED HERE
+        self.seqmap_file = self.config['SEQMAP_FILE']
 
         # Get classes to eval
         self.valid_classes = ['pedestrian']
@@ -98,7 +100,8 @@ class MotChallenge2DBox(_BaseDataset):
 
         # Get trackers to eval
         if self.config['TRACKERS_TO_EVAL'] is None:
-            self.tracker_list = os.listdir(self.tracker_fol)
+            # self.tracker_list = os.listdir(self.tracker_fol)
+            self.tracker_list = [ d for d in os.listdir(self.tracker_fol) if not d.startswith('.') and os.path.isdir(os.path.join(self.tracker_fol, d))]
         else:
             self.tracker_list = self.config['TRACKERS_TO_EVAL']
 
@@ -131,44 +134,77 @@ class MotChallenge2DBox(_BaseDataset):
     def _get_seq_info(self):
         seq_list = []
         seq_lengths = {}
-        if self.config["SEQ_INFO"]:
-            seq_list = list(self.config["SEQ_INFO"].keys())
-            seq_lengths = self.config["SEQ_INFO"]
-
+        #COMMENTED OUT SEQ INFO STUFF
+        # if self.config["SEQ_INFO"]:
+        #     seq_list = list(self.config["SEQ_INFO"].keys())
+        #     seq_lengths = self.config["SEQ_INFO"]
             # If sequence length is 'None' tries to read sequence length from .ini files.
-            for seq, seq_length in seq_lengths.items():
-                if seq_length is None:
-                    ini_file = os.path.join(self.gt_fol, seq, 'seqinfo.ini')
-                    if not os.path.isfile(ini_file):
-                        raise TrackEvalException('ini file does not exist: ' + seq + '/' + os.path.basename(ini_file))
-                    ini_data = configparser.ConfigParser()
-                    ini_data.read(ini_file)
-                    seq_lengths[seq] = int(ini_data['Sequence']['seqLength'])
+        # for seq, seq_length in seq_lengths.items():
+        #     if seq_length is None:
+        #         ini_file = os.path.join(self.gt_fol, seq, 'seqinfo.ini')
+        #         if not os.path.isfile(ini_file):
+        #             raise TrackEvalException('ini file does not exist: ' + seq + '/' + os.path.basename(ini_file))
+        #         ini_data = configparser.ConfigParser()
+        #         ini_data.read(ini_file)
+        #         seq_lengths[seq] = int(ini_data['Sequence']['seqLength'])
 
-        else:
-            if self.config["SEQMAP_FILE"]:
-                seqmap_file = self.config["SEQMAP_FILE"]
+        # # else:
+        # if self.config["SEQMAP_FILE"]:
+        #     seqmap_file = self.config["SEQMAP_FILE"]
+        # else:
+        #     if self.config["SEQMAP_FOLDER"] is None:
+        #         seqmap_file = os.path.join(self.config['GT_FOLDER'], 'seqmaps', self.gt_set + '.txt')
+        #     else:
+        #         seqmap_file = os.path.join(self.config["SEQMAP_FOLDER"], self.gt_set + '.txt')
+        # if not os.path.isfile(seqmap_file):
+        #     print('no seqmap found: ' + seqmap_file)
+        #     raise TrackEvalException('no seqmap found: ' + os.path.basename(seqmap_file))
+        # with open(seqmap_file) as fp:
+        #     reader = csv.reader(fp)
+        #     for i, row in enumerate(reader):
+        #         if i == 0 or row[0] == '':
+        #             continue
+        #         seq = row[0]
+        #         seq_list.append(seq)
+        #         ini_file = os.path.join(self.gt_fol, seq, 'seqinfo.ini')
+        #         if not os.path.isfile(ini_file):
+        #             raise TrackEvalException('ini file does not exist: ' + seq + '/' + os.path.basename(ini_file))
+        #         ini_data = configparser.ConfigParser()
+        #         ini_data.read(ini_file)
+        #         seq_lengths[seq] = int(ini_data['Sequence']['seqLength'])
+        # Handle SEQMAP_FILE input properly
+        seqmap_file = self.config["SEQMAP_FILE"]
+        if isinstance(seqmap_file, list):
+            if len(seqmap_file) == 1:
+                seqmap_file = seqmap_file[0]
             else:
-                if self.config["SEQMAP_FOLDER"] is None:
-                    seqmap_file = os.path.join(self.config['GT_FOLDER'], 'seqmaps', self.gt_set + '.txt')
-                else:
-                    seqmap_file = os.path.join(self.config["SEQMAP_FOLDER"], self.gt_set + '.txt')
-            if not os.path.isfile(seqmap_file):
-                print('no seqmap found: ' + seqmap_file)
-                raise TrackEvalException('no seqmap found: ' + os.path.basename(seqmap_file))
-            with open(seqmap_file) as fp:
-                reader = csv.reader(fp)
-                for i, row in enumerate(reader):
-                    if i == 0 or row[0] == '':
-                        continue
-                    seq = row[0]
-                    seq_list.append(seq)
-                    ini_file = os.path.join(self.gt_fol, seq, 'seqinfo.ini')
-                    if not os.path.isfile(ini_file):
-                        raise TrackEvalException('ini file does not exist: ' + seq + '/' + os.path.basename(ini_file))
-                    ini_data = configparser.ConfigParser()
-                    ini_data.read(ini_file)
-                    seq_lengths[seq] = int(ini_data['Sequence']['seqLength'])
+                raise TrackEvalException('SEQMAP_FILE should be a single path, not a list of multiple items.')
+
+        if not seqmap_file:
+            if self.config["SEQMAP_FOLDER"] is None:
+                seqmap_file = os.path.join(self.config['GT_FOLDER'], 'seqmaps', self.gt_set + '.txt')
+            else:
+                seqmap_file = os.path.join(self.config["SEQMAP_FOLDER"], self.gt_set + '.txt')
+
+        if not os.path.isfile(seqmap_file):
+            print('no seqmap found: ' + str(seqmap_file))
+            raise TrackEvalException('no seqmap found: ' + os.path.basename(str(seqmap_file)))
+
+        # Read sequence names and lengths
+        with open(seqmap_file) as fp:
+            reader = csv.reader(fp)
+            for i, row in enumerate(reader):
+                if i == 0 or row[0] == '':
+                    continue
+                seq = row[0]
+                seq_list.append(seq)
+                ini_file = os.path.join(self.gt_fol, seq, 'seqinfo.ini')
+                if not os.path.isfile(ini_file):
+                    raise TrackEvalException('ini file does not exist: ' + seq + '/' + os.path.basename(ini_file))
+                ini_data = configparser.ConfigParser()
+                ini_data.read(ini_file)
+                seq_lengths[seq] = int(ini_data['Sequence']['seqLength'])
+                
         return seq_list, seq_lengths
 
     def _load_raw_file(self, tracker, seq, is_gt):
@@ -225,7 +261,7 @@ class MotChallenge2DBox(_BaseDataset):
             time_key = str(t+1)
             if time_key in read_data.keys():
                 try:
-                    time_data = np.asarray(read_data[time_key], dtype=np.float)
+                    time_data = np.asarray(read_data[time_key], dtype=float)
                 except ValueError:
                     if is_gt:
                         raise TrackEvalException(
@@ -356,7 +392,7 @@ class MotChallenge2DBox(_BaseDataset):
 
             # Match tracker and gt dets (with hungarian algorithm) and remove tracker dets which match with gt dets
             # which are labeled as belonging to a distractor class.
-            to_remove_tracker = np.array([], np.int)
+            to_remove_tracker = np.array([], int)
             if self.do_preproc and self.benchmark != 'MOT15' and gt_ids.shape[0] > 0 and tracker_ids.shape[0] > 0:
 
                 # Check all classes are valid:
@@ -410,14 +446,14 @@ class MotChallenge2DBox(_BaseDataset):
             gt_id_map[unique_gt_ids] = np.arange(len(unique_gt_ids))
             for t in range(raw_data['num_timesteps']):
                 if len(data['gt_ids'][t]) > 0:
-                    data['gt_ids'][t] = gt_id_map[data['gt_ids'][t]].astype(np.int)
+                    data['gt_ids'][t] = gt_id_map[data['gt_ids'][t]].astype(int)
         if len(unique_tracker_ids) > 0:
             unique_tracker_ids = np.unique(unique_tracker_ids)
             tracker_id_map = np.nan * np.ones((np.max(unique_tracker_ids) + 1))
             tracker_id_map[unique_tracker_ids] = np.arange(len(unique_tracker_ids))
             for t in range(raw_data['num_timesteps']):
                 if len(data['tracker_ids'][t]) > 0:
-                    data['tracker_ids'][t] = tracker_id_map[data['tracker_ids'][t]].astype(np.int)
+                    data['tracker_ids'][t] = tracker_id_map[data['tracker_ids'][t]].astype(int)
 
         # Record overview statistics.
         data['num_tracker_dets'] = num_tracker_dets
