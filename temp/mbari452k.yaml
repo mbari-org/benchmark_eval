@@ -1,0 +1,429 @@
+path: ../datasets/mbari452k
+train: images
+val: images
+
+names:
+  0: Abraliopsis
+  1: Abyssocucumis abyssorum
+  2: Acanthamunnopsis milleri
+  3: Acanthascinae
+  4: Acanthogorgia
+  5: Acanthoptilum
+  6: Acesta
+  7: Actinernus
+  8: Actiniaria
+  9: Actinopterygii
+  10: Actinoscyphia
+  11: Actinostoloidea
+  12: Aegina
+  13: Aegina citrea
+  14: Aeginura
+  15: Akoya platinum
+  16: Albatrossia pectoralis
+  17: Alciopidae
+  18: Alcyonacea
+  19: Amphipoda
+  20: Anguilliformes
+  21: Annelida
+  22: Anoplopoma fimbria
+  23: Antedonoidea
+  24: Anthoptilum
+  25: Antimora microlepis
+  26: Antipatharia
+  27: Apolemia
+  28: Aporocidaris milleri
+  29: Apostichopus
+  30: Apostichopus leukothele
+  31: Appendicularia
+  32: Arctapodema
+  33: Arthropoda
+  34: Asbestopluma
+  35: Asbestopluma monticola
+  36: Asbestopluma rickettsi
+  37: Ascidiacea
+  38: Asteroidea
+  39: Asteronyx
+  40: Asthenactis
+  41: Atolla
+  42: Atolla gigantea
+  43: Aurelia
+  44: Aves
+  45: Bargmannia
+  46: Bargmannia elongata
+  47: Bargmannia lata
+  48: Bathochordaeus
+  49: Bathochordaeus charon inner filter
+  50: Bathochordaeus charon outer filter
+  51: Bathochordaeus inner filter
+  52: Bathochordaeus mcnutti
+  53: Bathochordaeus mcnutti inner filter
+  54: Bathochordaeus mcnutti outer filter
+  55: Bathochordaeus outer filter
+  56: Bathochordaeus sinker
+  57: Bathochordaeus stygius
+  58: Bathochordaeus stygius inner filter
+  59: Bathochordaeus stygius outer filter
+  60: Bathocyroe
+  61: Bathyalcyon
+  62: Bathydoris aioca
+  63: Bathydorus laevis pseudospinosus
+  64: Bathydorus laniger
+  65: Bathyphellia australis
+  66: Bathypterois
+  67: Bathyraja
+  68: Bathyraja kincaidii
+  69: Bathyraja trachura
+  70: Bathysaurus mollis
+  71: Bathyteuthis berryi
+  72: Benthocodon
+  73: Beringraja rhina
+  74: Beroe
+  75: Beroe abyssicola
+  76: Beroe forskalii
+  77: Bivalvia
+  78: Bolinopsis
+  79: Bolocera
+  80: Bonelliidae
+  81: Boreomysis
+  82: Botrynema
+  83: Brachiopoda
+  84: Branchiocerianthus imperator
+  85: Brisingida
+  86: Bryozoa
+  87: Caecosagitta macrocephala
+  88: Callistephanus
+  89: Callistephanus kofoidi
+  90: Callistephanus simplex
+  91: Calycophorae
+  92: Careproctus
+  93: Caridea
+  94: Cercozoa
+  95: Ceriantharia
+  96: Chaetognatha
+  97: Chaetopterus pugaporcinus
+  98: Cherublemma emmelas
+  99: Chimaeriformes
+  100: Chionoecetes tanneri
+  101: Chiroteuthis calyx
+  102: Chorilia longipes
+  103: Chromatonema
+  104: Chrysaora
+  105: Chrysogorgia
+  106: Chuniphyes multidentata
+  107: Cirripedia
+  108: Cladorhizidae
+  109: Clavularia
+  110: Clio
+  111: Cnemidocarpa
+  112: Cnidaria
+  113: Colobonema apicatum
+  114: Colobonema sericeum
+  115: Colossendeis
+  116: Copepoda
+  117: Corallimorphus
+  118: Corallimorphus pilatus
+  119: Corolla
+  120: Corymorpha gigantea
+  121: Coryphaenoides
+  122: Cranchiidae
+  123: Craseoa lathetica
+  124: Crinoidea
+  125: Crossaster
+  126: Crossota
+  127: Ctenophora
+  128: Ctenophora sp. A
+  129: Culeolus
+  130: Cyclosalpa
+  131: Cydippida
+  132: Cydippida sp. 1
+  133: Cydippida sp. A
+  134: Cystisoma
+  135: Decapoda
+  136: Deepstaria
+  137: Delectopecten
+  138: Demospongiae
+  139: Desmophyes annectens
+  140: Desmophyes haematogaster
+  141: Detritus Sampler
+  142: Dibranchus
+  143: Dofleinia
+  144: Doliolida
+  145: Doliolina (Doliolinetta)
+  146: Doliolula equus
+  147: Doryteuthis (Amerigo) opalescens
+  148: Dosidicus gigas
+  149: Earleria corachloeae
+  150: Echinocrepis rostrata
+  151: Echinoidea
+  152: Elasmobranchii
+  153: Elpidia
+  154: Embassichthys bathybius
+  155: Enteroctopus dofleini
+  156: Enteropneusta
+  157: Eptatretus
+  158: Erenna
+  159: Eukrohnia fowleri
+  160: Eumedusa
+  161: Euphausiacea
+  162: Eusergestes similis
+  163: Farrea
+  164: Flota
+  165: Forskalia
+  166: Frillagalma vityazi
+  167: Fritillaria
+  168: Funiculina-Balticina complex
+  169: Galatheoidea
+  170: Gastropoda
+  171: Gersemia juliepackardae
+  172: Gonatus
+  173: Gonatus onyx eggcase
+  174: Gorgonocephalus
+  175: Graneledone
+  176: Gymnopraia lapislazula
+  177: Halicreatidae
+  178: Haliscera conica
+  179: Halitrephes
+  180: Hastigerinella digitata
+  181: Helicosalpa
+  182: Heterocarpus
+  183: Heterochone calyx
+  184: Heteropolypus ritteri
+  185: Hexactinellida
+  186: Hippasteria
+  187: Hirudinea
+  188: Histioteuthis heteropsis
+  189: Holothuroidea
+  190: Hormathiidae
+  191: Hormiphora californensis
+  192: Hyalonema (Oonema) bianchoratum
+  193: Hydrolagus colliei
+  194: Hymenaster
+  195: Iosactis vagabunda
+  196: Isidella
+  197: Isidella tentaculum
+  198: Isididae
+  199: Isopoda
+  200: Isosicyonis
+  201: Keratoisis
+  202: Kophobelemnon
+  203: Kophobelemnon macrospinosum
+  204: Kophobelemnon sp. 1
+  205: Krill molt
+  206: LRJ complex
+  207: Lamellibrachia
+  208: Lampocteis
+  209: Lampocteis sp. A
+  210: Lanceolidae
+  211: Laqueus
+  212: Laqueus californicus
+  213: Latrunculia (Latrunculia) austini
+  214: Lensia conoidea
+  215: Lepidisis
+  216: Leptothecata
+  217: Leuckartiara
+  218: Leuroglossus
+  219: Lillipathes
+  220: Lilyopsis fluoracantha
+  221: Liparidae
+  222: Liponema brevicorne
+  223: Lithodidae
+  224: Llyria
+  225: Lobata
+  226: Lophiiformes
+  227: Luidia foliolata
+  228: Lycenchelys
+  229: Lychnagalma utricularia
+  230: Lycodapus
+  231: Lycodes
+  232: Lycodes cortezianus
+  233: Lycodes diapterus
+  234: Macrouridae
+  235: Mediaster
+  236: Mediaster aequalis
+  237: Medusae
+  238: Melanostigma pammelas
+  239: Merluccius productus
+  240: Mesochordaeus erythrocephalus
+  241: Metridium farcimen
+  242: Microstomus pacificus
+  243: Midwater Respirometry System
+  244: Mitrocoma cellularia
+  245: Modeeria rotunda
+  246: Mola mola
+  247: Mollusca
+  248: Moloha faxoni
+  249: Munida
+  250: Munidopsis
+  251: Munneurycope murrayi
+  252: Munnopsidae
+  253: Muusoctopus
+  254: Mycale
+  255: Myctophidae
+  256: Mysida
+  257: Mystery Mollusc
+  258: Myxoderma
+  259: Nanomia bijuga
+  260: Narcomedusae
+  261: Nemertea
+  262: Neptunea-Buccinum Complex
+  263: Nudibranchia
+  264: Octopoda
+  265: Octopoteuthis deletron
+  266: Octopus californicus
+  267: Octopus rubescens
+  268: Ophidiiformes
+  269: Ophiodon elongatus
+  270: Ophiuroidea
+  271: Oplophoridae
+  272: Osedax
+  273: Paelopatides confundens
+  274: Paguroidea
+  275: Pandalus
+  276: Pandalus amplus
+  277: Pandalus platyceros
+  278: Pandea rubra
+  279: Pandeidae
+  280: Pannychia moseleyi
+  281: Pantachogon haeckeli
+  282: Paragorgia
+  283: Paragorgia arborea
+  284: Paralomis
+  285: Paralomis multispina
+  286: Paraphyllina
+  287: Parastenella
+  288: Pasiphaea
+  289: Pectinidae
+  290: Peniagone
+  291: Peniagone gracilis
+  292: Peniagone papillata
+  293: Peniagone sp. 2
+  294: Peniagone sp. A
+  295: Peniagone vitrea- sp. 1 complex
+  296: Pennatula
+  297: Pennatula phosphorea
+  298: Pennatulacea
+  299: Pennatuloidea
+  300: Pentanchidae
+  301: Periphylla periphylla
+  302: Phacellophora camtschatica
+  303: Phronima sedentaria
+  304: Physiculus
+  305: Physonectae
+  306: Planctoteuthis
+  307: Plesionika
+  308: Pleuroncodes planipes
+  309: Pleuronectiformes
+  310: Poeobius meseres
+  311: Polychaeta
+  312: Polychelidae 2
+  313: Polynoidae
+  314: Polyplacophora
+  315: Poralia rufescens
+  316: Porifera
+  317: Praya dubia
+  318: Prayidae
+  319: Primnoidae
+  320: Procymbulia
+  321: Psamminidae sp. 1
+  322: Pseudobathylagus milleri
+  323: Psolidae
+  324: Psolus squamatus
+  325: Psychrolutes phrictus
+  326: Psychropotes
+  327: Pteraster
+  328: Pteropoda
+  329: Ptychogastria polaris
+  330: Ptychogena
+  331: Push Corer
+  332: Pycnogonida
+  333: Pyrosoma
+  334: Pyrosoma detritus
+  335: Radiozoa
+  336: Rajiformes
+  337: Rathbunaster californicus
+  338: Resomia ornicephala
+  339: Rhodaliidae
+  340: Rhopalonematidae
+  341: Salpida
+  342: Scleractinia
+  343: Scleralcyonacea
+  344: Sclerothamnopsis
+  345: Scombridae
+  346: Scotoplanes
+  347: Scotoplanes globosa
+  348: Scotoplanes sp. A
+  349: Sebastes
+  350: Sebastes diploproa
+  351: Sebastes melanostomus
+  352: Sebastolobus
+  353: Sergestid molt
+  354: Serpulidae
+  355: Siboglinidae
+  356: Sicyonis
+  357: Siphonophorae
+  358: Sipuncula
+  359: Solasteridae
+  360: Solmaris
+  361: Solmissus
+  362: Solmundella bitentaculata
+  363: Spectrunculus grandis
+  364: Staurocalyptus
+  365: Staurocalyptus solidus
+  366: Stellamedusa ventana
+  367: Sternostylus
+  368: Strongylocentrotus fragilis
+  369: Stygiomedusa gigantea
+  370: Stylasterias forreri
+  371: Suction Sampler
+  372: Swima
+  373: Synallactidae
+  374: Terebellida
+  375: Tetronarce californica
+  376: Tetrorchis
+  377: Teuthoidea
+  378: Thalassocalyce
+  379: Thenea muricata
+  380: Tiburonia granrojo
+  381: Tjalfiella
+  382: Tomopterid eggcase
+  383: Tomopteris
+  384: Tritonia tetraquetra
+  385: Tromikosoma
+  386: Tromikosoma panamense
+  387: Tunicata
+  388: Tuscaroridae
+  389: Umbellula
+  390: Vampyroteuthis infernalis
+  391: Vesicomyidae
+  392: Vitreosalpa gemini
+  393: Vogtia
+  394: Xenoturbella
+  395: Zalophus californianus
+  396: Zoantharia
+  397: Zoarcidae
+  398: bacterial mat
+  399: corehole
+  400: detritus
+  401: eggcase
+  402: equipment
+  403: geological feature
+  404: hole
+  405: ink
+  406: manipulator
+  407: metal scoop
+  408: mongo
+  409: mung
+  410: shell fragment
+  411: sinker
+  412: stalk
+  413: trash
+  414: tube
+  415:  Tuscaroridae
+  416:  Aegina
+  417:  b\
+  418: SebastesSebastes
+  419:  Sebastes
+  420:  Strongylocentrotus fragilis
+  421:   Strongylocentrotus fragilis
+  422: Sabellidae
+  423:  Munida
