@@ -7,7 +7,7 @@ from ._base_dataset import _BaseDataset
 from .. import utils
 from .. import _timing
 from ..utils import TrackEvalException
-#Elaine: edited some things regarding seqinfo
+#Elaine: edited some things regarding seqinfo. Also modified some code about the classes to eval
 
 class MotChallenge2DBox(_BaseDataset):
     """Dataset class for MOT Challenge 2D bounding box tracking"""
@@ -22,7 +22,7 @@ class MotChallenge2DBox(_BaseDataset):
             'TRACKERS_FOLDER': os.path.join(code_path, 'data/predictions/'),  # Trackers location
             'OUTPUT_FOLDER': None,  # Where to save eval results (if None, same as TRACKERS_FOLDER)
             'TRACKERS_TO_EVAL': None,  # Filenames of trackers to eval (if None, all in folder)
-            'CLASSES_TO_EVAL': ['pedestrian'],  # Valid: ['pedestrian']
+            'CLASSES_TO_EVAL': ['1'],  # Valid: ['pedestrian']
             'BENCHMARK': 'MOT17',  # Valid: 'MOT17', 'MOT16', 'MOT20', 'MOT15'
             'SPLIT_TO_EVAL': 'train',  # Valid: 'train', 'test', 'all'
             'INPUT_AS_ZIP': False,  # Whether tracker input files are zipped
@@ -71,12 +71,12 @@ class MotChallenge2DBox(_BaseDataset):
         self.seqmap_file = self.config['SEQMAP_FILE']
 
         # Get classes to eval
-        self.valid_classes = ['pedestrian']
+        self.valid_classes = ['1']
         self.class_list = [cls.lower() if cls.lower() in self.valid_classes else None
                            for cls in self.config['CLASSES_TO_EVAL']]
-        if not all(self.class_list):
-            raise TrackEvalException('Attempted to evaluate an invalid class. Only pedestrian class is valid.')
-        self.class_name_to_class_id = {'pedestrian': 1, 'person_on_vehicle': 2, 'car': 3, 'bicycle': 4, 'motorbike': 5,
+        # if not all(self.class_list):
+        #     raise TrackEvalException('Attempted to evaluate an invalid class. Only pedestrian class is valid.')
+        self.class_name_to_class_id = {'1': 1, 'person_on_vehicle': 2, 'car': 3, 'bicycle': 4, 'motorbike': 5,
                                        'non_mot_vehicle': 6, 'static_person': 7, 'distractor': 8, 'occluder': 9,
                                        'occluder_on_ground': 10, 'occluder_full': 11, 'reflection': 12, 'crowd': 13}
         self.valid_class_numbers = list(self.class_name_to_class_id.values())
