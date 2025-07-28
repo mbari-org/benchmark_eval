@@ -1,7 +1,8 @@
 site_name: Benchmarking Docs
 nav:
 - Home: elaine_documentation.md
-# theme: readthedocs
-extra_css:
-    - https://docs.mbari.org/css/mbari.css
+# extra_css:
+#     - https://docs.mbari.org/css/mbari.css
 
+# extra_css:
+#     - extra/extra.css

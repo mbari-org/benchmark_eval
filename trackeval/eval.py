@@ -81,7 +81,7 @@ class Evaluator:
                     time_start = time.time()
                     if config['USE_PARALLEL']:
                         if show_progressbar and TQDM_IMPORTED:
-                            seq_list_sorted = sorted(seq_list)
+                            seq_list_sorted = sorted(seq_lxist)
 
                             with Pool(config['NUM_PARALLEL_CORES']) as pool, tqdm.tqdm(total=len(seq_list)) as pbar:
                                 _eval_sequence = partial(eval_sequence, dataset=dataset, tracker=tracker,

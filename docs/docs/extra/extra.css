@@ -1,0 +1,10 @@
+@import url(https://fonts.googleapis.com/css?family=Merriweather:300);
+body {
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+}
+
+@import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@4/distr/fira_code.css);
+code, tt {
+  font-family: 'Fira Code', 'Roboto Mono', monospace;
+}
