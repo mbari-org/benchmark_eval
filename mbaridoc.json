@@ -1,0 +1,5 @@
+{
+    "docdir": "doc",
+    "always_generate": true, 
+    "public": true
+}

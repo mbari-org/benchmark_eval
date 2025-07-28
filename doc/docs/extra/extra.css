@@ -8,3 +8,9 @@ body {
 code, tt {
   font-family: 'Fira Code', 'Roboto Mono', monospace;
 }
+@import url(https://docs.mbari.org/css/iosevka-custom/iosevka-custom.css);
+code, tt {
+  font-family: 'Iosevka', 'Roboto Mono', monospace;
+  font-weight: 400;
+  font-variant-ligatures: none;
+}

@@ -1,8 +1,0 @@
-site_name: Benchmarking Docs
-nav:
-- Home: elaine_documentation.md
-# extra_css:
-#     - https://docs.mbari.org/css/mbari.css
-
-# extra_css:
-#     - extra/extra.css
