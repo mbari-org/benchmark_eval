@@ -1,17 +1,24 @@
-# Welcome to MkDocs
+Hey there! This is elaine's documentation for creating benchmark datasets and evaluating models using HOTA :)
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Link to Github: [here](https://github.com/mbari-org/benchmark_eval)
 
-## Commands
+A majority of the code in this repository is the TrackEval github repo. I added a bit of code here and there and set up the directory structure to run the HOTA metric for our benchmark dataset and renamed it benchmark-eval. 
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## Overview
 
-## Project layout
+This documentation provides instructions on how to: 
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+- Annotate videos using RectLabel
+- Obtain ground truth files and model detection files 
+- Calculate HOTA scores
+
+
+## Getting Started
+
+- Check [Installation](installation.md) on setting up your environment. 
+- Look into [Usage](usage.md) on how to navigate the repository
+- See [Tips](tips.md) for an explanation of the directory structure and example files. 
+
+<br>
+
+I hope this helps! If you have any questions you can reach me at elaineliu05@gmail.com 

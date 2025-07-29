@@ -1,6 +1,6 @@
 site_name: Benchmarking Docs
 nav:
-- Home: elaine_documentation.md
+- Home: index.md
 - Installation: installation.md
 - Usage: usage.md
 - Tips: tips.md
