@@ -2,11 +2,26 @@
 
 ## How to annotate a video in Rectlabel
 
-To annotate, need img, xml, and label folders. 
+To annotate a video, you need images, labels, and xml folders. This step can be done anywhere outside or inside the directory, since we will be exporting the annotated files to benchmark_eval. 
 
 - Go to File -> Convert video to image frames and put the resulting frames into an img folder. 
-- Create blank xml folder. 
-- Run **model + tracker** cell in **tracker_output.ipynb** file to get yolo labels. In rectlabel, go to export -> import yolo txt files. Select label folder for yolo txt files and xml file for where annotations go. 
+- Create an empty xml folder. 
+- Go to **tracker_output.ipynb** and set the video sequence and tracker you are using in the **setting variables cell**. Run the **defining functions cell**.
+- Run **model + tracker** cell to get yolo labels. The model parameters can be adjusted here, i.e. conf, iou, and imgsz. If you are using Windows/Linux, change device='mps' to device='cpu' or device='cuda' (GPU). 
+- In rectlabel, go to export -> import yolo txt files. To open your files, select the images folder for the "Images folder" and xml folder for the "Annotations folder". 
+
+Your file structure could look something like this:
+```
+videos  
+│
+└───simple_mid
+|    └───images
+|    └───labels  
+|    └───xml
+| 
+└───simple_ben
+| ...
+```
 
 Helpful rectlabel tips:
 
@@ -19,8 +34,8 @@ Helpful rectlabel tips:
 ## How to get Ground Truth files
 - After cleaning up detections in rectlabel, go to Export -> Export yolo txt files, save them under *benchmark_eval/temp*.
 - Under *benchmark_eval/data/gt*, create a folder named after your vidseq_name and create an empty folder named gt inside. ie (*../simple_mid/gt*).
-- Go to tracker_output.ipynb and run the **setting variables cell**. Make sure you specify the correct video sequence.  
-- Run the **ground truth cell** in tracker_output.ipynb to add the track id to the yolo txt files. This will also convert the file from yolo to motchallenge format. The final ground truth file should end up in *benchmark_eval/data/gt/vidseq_name/gt*
+- Go to **tracker_output.ipynb** and make sure you have the correct video sequence in the **setting variables cell**.   
+- Run the **ground truth cell** to add the track id to the yolo txt files. This will also convert the file from yolo to motchallenge format. The final ground truth file should end up in *benchmark_eval/data/gt/vidseq_name/gt*
 
 ### What is the MOTChallenge format?
 
@@ -28,17 +43,21 @@ The MOTChallenge file format is required for the metric calculation in TrackEval
 
 MOTChallenge format:
 
-<frame\>, <id\>, <x\>, <y\>, <w\>, <h\>, <conf\>, <class\>, <vis\>
+```
+<frame>, <id>, <x>, <y>, <w>, <h>, <conf>, <class>, <vis>
+```
 
 Example line:
 
+```
 1, 1, 1002.00, 610.50, 45.00, 58.50, 1, 1, -1
+```
 
-This means that in frame 1, an object with a track id 1 has a bounding box with a top left corner at (1002.00, 610.50) and a width of 45.00 and height of 58.50. Confidence is always set to 1. Class and vis (visibility) are not required by TrackEval, so I set them manually to 1 and -1, respectively. 
+This means that in frame 1, an object with a track id 1 has a bounding box with a top left corner at (1002.00, 610.50) and a width of 45.00 and height of 58.50. Trackeval does not require confidence, class, or vis (visibility), so for these purposes I set them manually to 1, 1 and -1, respectively. 
 
 
 ## How to get Model Output files
-- Go to tracker_output.ipynb and double check the video sequence in the **setting variables cell**.
+- Go to **tracker_output.ipynb** and double check the video sequence in the **setting variables cell**.
 - Run the **model + tracker cell** to get the model detections and convert them from yolo to motchallenge format. The final txt file should end up in *benchmark_eval/data/predictions/mot_challenge*
 
 *if an error occurs, double check the paths. There are folders being generated and folders that you add yourself, so its possible that things can get mixed up!
@@ -52,7 +71,7 @@ This means that in frame 1, an object with a track id 1 has a bounding box with 
 - Next, edit the vidseq_names.txt under *benchmark_eval/data/seqmaps*. The format should have “name” at the top, and then all the video sequences you would like to get the HOTA values for. An example can be seen in [Tips](tips.md).
 - Lastly, in the terminal, make sure you are in the benchmark_eval directory and type in this command:
 
-```
+```bash
 python scripts/run_mot_challenge.py  
   --GT_FOLDER data/gt \
   --TRACKERS_FOLDER data/predictions \

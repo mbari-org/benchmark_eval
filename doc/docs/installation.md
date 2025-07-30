@@ -10,7 +10,12 @@ pyenv install 3.10.13
 
 Then, create a new virtual environment to work in
 ```
-pyenv virtualenv 3.10.13 env-name
+pyenv virtualenv 3.10.13 insert-env-name
+```
+
+Activate your virtual environment using
+```
+pyenv activate insert-env-name
 ```
 
 Lastly, install the benchmark_eval_requirements.txt file
