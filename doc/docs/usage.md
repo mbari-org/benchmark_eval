@@ -57,15 +57,15 @@ This means that in frame 1, an object with a track id 1 has a bounding box with 
 
 
 ## How to get Model Output files
-- Go to **tracker_output.ipynb** and double check the video sequence in the **setting variables cell**.
+- Go to **tracker_output.ipynb** and double check the video sequence, model, and tracker in the **setting variables cell**.
 - Run the **model + tracker cell** to get the model detections and convert them from yolo to motchallenge format. The final txt file should end up in *benchmark_eval/data/predictions/mot_challenge*
 
 *if an error occurs, double check the paths. There are folders being generated and folders that you add yourself, so its possible that things can get mixed up!
 
 
 ## How to get HOTA scores
-- In the video sequence folders under *benchmark_eval/data/gt*, add a folder named after your video sequence. In this folder:
-    - add a folder called img1 to hold all the video image frames (should be the original frames, no bounding boxes).
+- If you look under *benchmark_eval/data/gt*, there should be a folder for your video sequence from the "How to get Ground Truth files" step. In this folder:
+    - Add a folder called img1 to hold all the video image frames (should be the original frames, no bounding boxes).
     - Create a seqinfo.ini file - the format is shown in [Tips](tips.md). The name should match the video sequence folder name, and the imDir should match the image directory name. Adjust frame rate, sequence length, image width, and image height accordingly. 
     - There should already be a gt folder from the "How to get Ground Truth files" step. 
 - Next, edit the vidseq_names.txt under *benchmark_eval/data/seqmaps*. The format should have “name” at the top, and then all the video sequences you would like to get the HOTA values for. An example can be seen in [Tips](tips.md).
