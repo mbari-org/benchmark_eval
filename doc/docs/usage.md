@@ -6,8 +6,8 @@ To annotate a video, you need images, labels, and xml folders. This step can be 
 
 - Go to File -> Convert video to image frames and put the resulting frames into an img folder. 
 - Create an empty xml folder. 
-- Go to **tracker_output.ipynb** and set the video sequence and tracker you are using in the **setting variables cell**. Run the **defining functions cell**.
-- Run **model + tracker** cell to get yolo labels. The model parameters can be adjusted here, i.e. conf, iou, and imgsz. If you are using Windows/Linux, change device='mps' to device='cpu' or device='cuda' (GPU). 
+- Go to **tracker_output.ipynb** and set the video sequence, model, and tracker you are using in the **setting variables cell**. Run the **defining functions cell**.
+- Run **model + tracker** cell to get yolo labels. The model parameters can be adjusted here, i.e. conf, iou, and imgsz. If you are using Windows/Linux, change device='mps' to device='cpu' or device='cuda' (GPU). Tracker parameters can also be adjusted in the yaml file. 
 - In rectlabel, go to export -> import yolo txt files. To open your files, select the images folder for the "Images folder" and xml folder for the "Annotations folder". 
 
 Your file structure could look something like this:
@@ -32,10 +32,10 @@ Helpful rectlabel tips:
 
 
 ## How to get Ground Truth files
-- After cleaning up detections in rectlabel, go to Export -> Export yolo txt files, save them under *benchmark_eval/temp*.
 - Under *benchmark_eval/data/gt*, create a folder named after your vidseq_name and create an empty folder named gt inside. ie (*../simple_mid/gt*).
+- After you have cleaned up detections in Rectlabel, go to Export -> Export yolo txt files, save them under the folder you just created. You can delete the names file that Rectlabel exports along with your labels (ie mbari452k.yaml)
 - Go to **tracker_output.ipynb** and make sure you have the correct video sequence in the **setting variables cell**.   
-- Run the **ground truth cell** to add the track id to the yolo txt files. This will also convert the file from yolo to motchallenge format. The final ground truth file should end up in *benchmark_eval/data/gt/vidseq_name/gt*
+- Run the **ground truth cell** to add the track id to the yolo txt files. This will look for the "labels" folder you exported to *benchmark_eval/data/gt/vidseq_name/gt* and create a folder called "labels_w_trackid". This folder will then be converted from yolo to motchallenge format. The final ground truth file will be called gt.txt and the temporary "labels" and "labels_w_trackid" files should be deleted. 
 
 ### What is the MOTChallenge format?
 
@@ -57,15 +57,15 @@ This means that in frame 1, an object with a track id 1 has a bounding box with 
 
 
 ## How to get Model Output files
-- Go to **tracker_output.ipynb** and double check the video sequence in the **setting variables cell**.
+- Go to **tracker_output.ipynb** and double check the video sequence, model, and tracker in the **setting variables cell**.
 - Run the **model + tracker cell** to get the model detections and convert them from yolo to motchallenge format. The final txt file should end up in *benchmark_eval/data/predictions/mot_challenge*
 
 *if an error occurs, double check the paths. There are folders being generated and folders that you add yourself, so its possible that things can get mixed up!
 
 
 ## How to get HOTA scores
-- In the video sequence folders under *benchmark_eval/data/gt*, add a folder named after your video sequence. In this folder:
-    - add a folder called img1 to hold all the video image frames (should be the original frames, no bounding boxes).
+- If you look under *benchmark_eval/data/gt*, there should be a folder for your video sequence from the "How to get Ground Truth files" step. In this folder:
+    - Add a folder called img1 to hold all the video image frames (should be the original frames, no bounding boxes).
     - Create a seqinfo.ini file - the format is shown in [Tips](tips.md). The name should match the video sequence folder name, and the imDir should match the image directory name. Adjust frame rate, sequence length, image width, and image height accordingly. 
     - There should already be a gt folder from the "How to get Ground Truth files" step. 
 - Next, edit the vidseq_names.txt under *benchmark_eval/data/seqmaps*. The format should have “name” at the top, and then all the video sequences you would like to get the HOTA values for. An example can be seen in [Tips](tips.md).
