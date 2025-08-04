@@ -23,24 +23,26 @@ Lastly, look under *data/predictions/mot_challenge*. It contains:
 benchmark_eval   
 │
 └───data
-    └───gt
-    |   └───simple_mid
-    |       └───gt    
-    |       |       gt.txt
-    |       └───img1
-    |       |   |   simple_mid_1.jpg
-    |       |   |   simple_mid_2.jpg
-    |       |   |   ...
-    |       |
-    |       └───seqinfo.ini
-    | 
-    └───predictions
-    |   └───mot_challenge
-    |       └───simple_mid.txt
-    |            
-    └───seqmaps
-        └───vidseq_names.txt
-
+|   └───gt
+|   |   └───simple_mid
+|   |       └───gt    
+|   |       |       gt.txt
+|   |       └───img1
+|   |       |   |   simple_mid_1.jpg
+|   |       |   |   simple_mid_2.jpg
+|   |       |   |   ...
+|   |       |
+|   |       └───seqinfo.ini
+|   | 
+|   └───predictions
+|   |   └───mot_challenge
+|   |       └───simple_mid.txt
+|   |            
+|   └───seqmaps
+|       └───vidseq_names.txt
+|
+└───videos
+| ...
 ```
 
 
