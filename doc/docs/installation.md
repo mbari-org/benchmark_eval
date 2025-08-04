@@ -20,15 +20,11 @@ First, install Python 3.10.13
 pyenv install 3.10.13
 ```
 
-If you don't have virtualenv installed, please type 
-```
-pip install virtualenv
-```
-
 Then, create a new virtual environment to work in
 ```
 pyenv virtualenv 3.10.13 insert-env-name
 ```
+*If you don't have virtualenv installed, please type "pip install virtualenv" or "brew install virtualenv" (Mac).
 
 Activate your virtual environment using
 ```

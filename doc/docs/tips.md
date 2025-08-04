@@ -42,7 +42,9 @@ benchmark_eval
 |       └───vidseq_names.txt
 |
 └───videos
-| ...
+    └───simple_mid
+    |   └───Midwater_simple_V4455_20221130T192123Z_prores.mov
+    | ...
 ```
 
 

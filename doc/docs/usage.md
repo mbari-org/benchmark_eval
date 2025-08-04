@@ -1,20 +1,20 @@
 # Usage 
 
-## How to annotate a video in Rectlabel
-
-To annotate a video, you need images, labels, and xml folders. This step can be done anywhere outside or inside the directory, since we will be exporting the annotated files to benchmark_eval. 
+## How to Annotate a Video in Rectlabel
+Create a folder called videos inside benchmark_eval. Inside videos, create a folder for your video sequence and insert your video file here. To annotate a video sequence, you will need an images, labels, and xml folders. 
 
 - Go to File -> Convert video to image frames and put the resulting frames into an img folder. 
 - Create an empty xml folder. 
 - Go to **tracker_output.ipynb** and set the video sequence, model, and tracker you are using in the **setting variables cell**. Run the **defining functions cell**.
 - Run **model + tracker** cell to get yolo labels. The model parameters can be adjusted here, i.e. conf, iou, and imgsz. If you are using Windows/Linux, change device='mps' to device='cpu' or device='cuda' (GPU). Tracker parameters can also be adjusted in the yaml file. 
-- In rectlabel, go to export -> import yolo txt files. To open your files, select the images folder for the "Images folder" and xml folder for the "Annotations folder". 
+- In Rectlabel, go to export -> import yolo txt files. To open your files, select the images folder for the "Images folder" and xml folder for the "Annotations folder". 
 
 Your file structure could look something like this:
 ```
 videos  
 │
 └───simple_mid
+|    └───Midwater_simple_V4455_20221130T192123Z_prores.mov
 |    └───images
 |    └───labels  
 |    └───xml
@@ -23,7 +23,7 @@ videos
 | ...
 ```
 
-Helpful rectlabel tips:
+Helpful Rectlabel tips:
 
 - Use move to edit boxes and create to create boxes
 - Turn on "Show labels on boxes" and "Show checkboxes on labels table"
@@ -35,9 +35,9 @@ The benchmark videos are too large to push to GitHub, so they are not included i
 
 ## How to get Ground Truth files
 - Under *benchmark_eval/data/gt*, create a folder named after your vidseq_name and create an empty folder named gt inside. ie (*../simple_mid/gt*).
-- After you have cleaned up detections in Rectlabel, go to Export -> Export yolo txt files, save them under the folder you just created. You can delete the names file that Rectlabel exports along with your labels (ie mbari452k.yaml)
+- After you have cleaned up detections in Rectlabel, go to Export -> Export yolo txt files, and save them under the "temp" folder. You can delete the names file that Rectlabel exports along with your labels (ie mbari452k.yaml)
 - Go to **tracker_output.ipynb** and make sure you have the correct video sequence in the **setting variables cell**.   
-- Run the **ground truth cell** to add the track id to the yolo txt files. This will look for the "labels" folder you exported to *benchmark_eval/data/gt/vidseq_name/gt* and create a folder called "labels_w_trackid". This folder will then be converted from yolo to motchallenge format. The final ground truth file will be called gt.txt and the temporary "labels" and "labels_w_trackid" files should be deleted. 
+- Run the **ground truth cell** to add the track id to the yolo txt files. This will look for the "labels" folder you exported to *benchmark_eval/temp* and create a folder called "labels_w_trackid". This folder will then be converted from yolo to motchallenge format. The final ground truth file will be called gt.txt and placed under *benchmark_eval/data/gt/{vid_seq_name}/gt/gt.txt*
 
 ### What is the MOTChallenge format?
 
@@ -74,8 +74,7 @@ This means that in frame 1, an object with a track id 1 has a bounding box with 
 - Lastly, in the terminal, make sure you are in the benchmark_eval directory and type in this command:
 
 ```bash
-python scripts/run_mot_challenge.py  
-  --GT_FOLDER data/gt \
+python scripts/run_mot_challenge.py  --GT_FOLDER data/gt \
   --TRACKERS_FOLDER data/predictions \
   --SEQMAP_FILE data/seqmaps/vidseq_names.txt \
   --TRACKER_SUB_FOLDER ''
