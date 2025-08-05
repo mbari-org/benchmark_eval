@@ -24,7 +24,7 @@ Then, create a new virtual environment to work in
 ```
 pyenv virtualenv 3.10.13 insert-env-name
 ```
-*If you don't have virtualenv installed, please type "pip install virtualenv" or "brew install virtualenv" (Mac).
+*If you don't have virtualenv installed, run "pip install virtualenv" or "brew install virtualenv" (Mac) first.
 
 Activate your virtual environment using
 ```

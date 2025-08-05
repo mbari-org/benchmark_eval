@@ -31,7 +31,7 @@ Helpful Rectlabel tips:
 - Command + arrow key to move through frames faster
 
 ## Setting Up Videos Folder
-The benchmark videos are too large to push to GitHub, so they are not included in the repository. If you have the videos, they should be located in a "videos" folder under benchmark_eval. If you would like to edit the video paths or add new videos, edit the **defining functions cell** in **tracker_output.ipynb**. 
+The benchmark videos are too large to push to GitHub, so they are not included in the repository. If you have the videos, they should be located in a "videos" folder under benchmark_eval. If you would like to edit the video paths or add new videos, edit the **setting variables cell** in **tracker_output.ipynb**. 
 
 ## How to get Ground Truth files
 - Under *benchmark_eval/data/gt*, create a folder named after your vidseq_name and create an empty folder named gt inside. ie (*../simple_mid/gt*).
