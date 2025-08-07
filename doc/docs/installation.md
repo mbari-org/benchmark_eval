@@ -22,13 +22,13 @@ pyenv install 3.10.13
 
 Then, create a new virtual environment to work in
 ```
-pyenv virtualenv 3.10.13 insert-env-name
+pyenv virtualenv 3.10.13 benchmark_eval
 ```
 *If you don't have virtualenv installed, run "pip install virtualenv" or "brew install virtualenv" (Mac) first.
 
 Activate your virtual environment using
 ```
-pyenv activate insert-env-name
+pyenv activate benchmark_eval
 ```
 
 Lastly, install the benchmark_eval_requirements.txt file
