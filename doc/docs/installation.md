@@ -2,12 +2,12 @@
 
 ## Cloning the Repository
 
-In your terminal, type in the command below. Make sure you're in the directory you'd like this to be in!
+In your terminal, type in the command below. Make sure you're in the directory you'd like this to be in:
 ```
 git clone https://github.com/mbari-org/benchmark_eval.git
 ```
 
-Then, to get into the repository, type
+Then, to get into the repository, type:
 ```
 cd benchmark_eval
 ```
@@ -20,18 +20,18 @@ First, install Python 3.10.13
 pyenv install 3.10.13
 ```
 
-Then, create a new virtual environment to work in
+Then, create a new virtual environment to work in:
 ```
 pyenv virtualenv 3.10.13 benchmark_eval
 ```
 *If you don't have virtualenv installed, run "pip install virtualenv" or "brew install virtualenv" (Mac) first.
 
-Activate your virtual environment using
+Activate your virtual environment using:
 ```
 pyenv activate benchmark_eval
 ```
 
-Lastly, install the benchmark_eval_requirements.txt file
+Lastly, install the benchmark_eval_requirements.txt file:
 ```
 pip install -r benchmark_eval_requirements.txt
 ```
