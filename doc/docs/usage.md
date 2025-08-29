@@ -1,14 +1,19 @@
 # Usage 
 
-## How to Annotate a Video in RectLabel
+## How to Annotate a Video in RectLabel Pro
 
-The benchmark videos are too large to push to GitHub, so they are not included in the repository. If you have the videos, they should be located in a `videos` folder under `benchmark_eval`. If you don't have it, create an empty `videos` folder. Inside `videos`, create a folder for your video sequence and insert your video file here. To annotate a video sequence, you will need `images`, `labels`, and `xml` folders. 
+The benchmark videos are too large to push to GitHub, so they are not included in the repository. You can find them on Hugging Face here: "update link". If you have the videos, they should be located in a `videos` folder under `benchmark_eval`. If you don't have it, create an empty `videos` folder. Inside `videos`, create a folder for your video sequence and insert your video file here. To make a benchmark video out of a video sequence, you will need `images`, `labels`, and `xml` folders. 
 
-1. Go to **File -> Convert video to image frames** and put the resulting frames into an `img` folder. 
+1. In RectLabel, select **File -> Convert video to image frames** and put the resulting frames into an `images` folder. 
 2. Create an empty `xml` folder. 
-3. Go to `tracker_output.ipynb` and set the video sequence, model, and tracker you are using in the **setting variables cell**. If you would like to edit the video paths or add new videos, edit the paths here. Run the **defining functions cell**.
-4. Run **model + tracker** cell to get YOLO labels. The model parameters can be adjusted here, i.e. `conf`, `iou`, and `imgsz`. If you are using Windows/Linux, change `device='mps'` to `device='cpu'` or `device='cuda'` (NVIDIA GPU). Tracker parameters can also be adjusted in the yaml file. 
-5. In RectLabel, go to **Export -> Import YOLO txt files**. To open your files, select the `images` folder for the "Images folder" and `xml` folder for the "Annotations folder". 
+3. Go to `tracker_output.ipynb` and set the video sequence, model, and tracker you are using in the **Setting Variables cell**. If you would like to edit the video paths or add new videos, edit the paths here. Run the **Defining Functions cell**.
+4. Run **Model + Tracker** cell to get YOLO labels. The model parameters can be adjusted here, e.g. `conf`, `iou`, and `imgsz`. If you are using Windows/Linux, change `device='mps'` to `device='cpu'` or `device='cuda'` (NVIDIA GPU). Tracker parameters can also be adjusted in the yaml file. Copy the 'labels' folder into your 'video' folder with 'images' and 'xml' folders.
+5. In RectLabel, go to "Open folder", select the `images` folder for the "Images folder" and the empty `xml` folder for the "Annotations folder" (Label format is PASCAL xml, sort images Numeric), then select OK.
+6. Select Settings, go to Projects tab, create a new project with the '+', and make Primary with checkbox. 
+7. Now go to **Export -> Import YOLO txt files**. Browse to your 'labels' folder and select "Open".
+8. Edit boxes and labels as needed to create a groundtruth video.
+9. To save, select File -> Save, or in Settings, in the Label Fast tab, choose checkbox 'Autosave'.
+10. Select File -> Close folder when completed.
 
 Your file structure could look something like this:
 
@@ -33,11 +38,11 @@ videos
 
 ## How to get Ground Truth files
 
-The `data` folder is also not included in GitHub. If you have the `data` folder, place it under benchmark_eval. If not, create an empty `data` folder with an empty `gt` folder inside. In here, create a folder named after your `vidseq_name` and create another empty folder named `gt` inside (e.g., `benchmark_eval/data/gt/simple_mid/gt`).
+The `data` folder is also not included in GitHub, it is available on Hugging Face "update link". If you have the `data` folder, place it under benchmark_eval. If not, create an empty `data` folder with an empty `gt` folder inside. In here, create a folder named after your `vidseq_name` and create another empty folder named `gt` inside (e.g., `benchmark_eval/data/gt/simple_mid/gt`).
 
 1. After you have cleaned up detections in RectLabel, go to **Export -> Export YOLO txt files**, and save them under the `temp` folder in `benchmark_eval`. You can delete the names file that RectLabel exports along with your labels (e.g., `mbari452k.yaml`).
-2. Go to `tracker_output.ipynb` and make sure you have the correct video sequence in the **setting variables cell**.
-3. Run the **ground truth cell** to add the track id to the YOLO txt files. This will look for the "labels" folder you exported to `benchmark_eval/temp` and create a folder called `labels_w_trackid`. This folder will then be converted from YOLO to MOT Challenge format. The final ground truth file will be called `gt.txt` and placed under `benchmark_eval/data/gt/{vid_seq_name}/gt/gt.txt`.
+2. Go to `tracker_output.ipynb` and make sure you have the correct video sequence in the **Setting Variables cell**.
+3. Run the **Ground Truth cell** to add the track id to the YOLO txt files. This will look for the "labels" folder you exported to `benchmark_eval/temp` and create a folder called `labels_w_trackid`. This folder will then be converted from YOLO to MOT Challenge format. The final ground truth file will be called `gt.txt` and script will place it under `benchmark_eval/data/gt/{vid_seq_name}/gt/gt.txt`.
 
 !!! note
     The `.pyenv/runs/detect` folder accumulates results from .
@@ -62,20 +67,20 @@ This means that in frame 1, an object with a track id 1 has a bounding box with 
 
 
 ## How to get Model Output files
-- Go to `tracker_output.ipynb` and double check the video sequence, model, and tracker in the **setting variables cell**.
-- Run the **model + tracker cell** to get the model detections and convert them from YOLO to MOT Challenge format. The final txt file should end up in `benchmark_eval/data/predictions/mot_challenge`
+1. Go to `tracker_output.ipynb` and double check the video sequence, model, and tracker in the **Setting Variables cell**.
+2. Run the **Model + Tracker cell** to get the model detections and convert them from YOLO to MOT Challenge format. The final txt file should end up in `benchmark_eval/data/predictions/mot_challenge`
 
 !!! note
-    If an error occurs, double check the paths. There are folders being generated and folders that you add yourself, so its possible that things can get mixed up!
+    If an error occurs, double check the paths. There are folders being generated and folders that you add yourself, so it's possible paths were not correctly identified.
 
 
 ## How to get HOTA scores
 1. If you look under `benchmark_eval/data/gt`, there should be a folder for your video sequence from the "How to get Ground Truth files" step. In this folder:
-    1. Add a folder called `img1` to hold all the video image frames (should be the original frames, no bounding boxes).
-    2. Create a `seqinfo.ini` file - the format is shown in [Tips](tips.md). The name should match the video sequence folder name, and the `imDir` should match the image directory name. Adjust frame rate, sequence length, image width, and image height accordingly. 
-    3. There should already be a `gt` folder from the "How to get Ground Truth files" step. 
+    a. Add a folder called `img1` to hold all the video image frames (should be the original frames from 'images' folder in RectLabel step 1 above, no bounding boxes).
+    b. Create a `seqinfo.ini` file - the format is shown in [Tips](tips.md). The name should match the video sequence folder name, and the `imDir` should match the image directory name. Adjust frame rate, sequence length, image width, and image height accordingly. 
+    c. There should already be a `gt` folder from the "How to get Ground Truth files" step. 
 2. Next, edit the `vidseq_names.txt` under `benchmark_eval/data/seqmaps`. The format should have "name" at the top, and then all the video sequences you would like to get the HOTA values for. An example can be seen in [Tips](tips.md).
-3. Lastly, in the terminal, make sure you are in the `benchmark_eval` directory and type in this command:
+3. Lastly, in the terminal, make sure you are in the `benchmark_eval` directory with your pyenv activated, and type in this command:
 
 ```bash
 python scripts/run_mot_challenge.py  \
