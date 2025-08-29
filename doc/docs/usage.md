@@ -7,10 +7,10 @@ The benchmark videos are too large to push to GitHub, so they are not included i
 1. In RectLabel, select **File -> Convert video to image frames** and put the resulting frames into an `images` folder. 
 2. Create an empty `xml` folder. 
 3. Go to `tracker_output.ipynb` and set the video sequence, model, and tracker you are using in the **Setting Variables cell**. If you would like to edit the video paths or add new videos, edit the paths here. Run the **Defining Functions cell**.
-4. Run **Model + Tracker** cell to get YOLO labels. The model parameters can be adjusted here, e.g. `conf`, `iou`, and `imgsz`. If you are using Windows/Linux, change `device='mps'` to `device='cpu'` or `device='cuda'` (NVIDIA GPU). Tracker parameters can also be adjusted in the yaml file. Copy the 'labels' folder into your 'video' folder with 'images' and 'xml' folders.
-5. In RectLabel, go to "Open folder", select the `images` folder for the "Images folder" and the empty `xml` folder for the "Annotations folder" (Label format is PASCAL xml, sort images Numeric), then select OK.
+4. Run **Model + Tracker** cell to get YOLO labels. The model parameters can be adjusted here, e.g. `conf`, `iou`, and `imgsz`. If you are using Windows/Linux, change `device='mps'` to `device='cpu'` or `device='cuda'` (NVIDIA GPU). Tracker parameters can also be adjusted in the yaml file. Copy the `labels` folder from `/runs/detect/track/` directory into your `videos` folder which has `images` and `xml` folders.
+5. In RectLabel, go to "Open folder", select the `images` folder for the "Images folder" and the empty `xml` folder for the "Annotations folder" (Label format is PASCAL xml, sort images Numeric), then select 'OK'.
 6. Select Settings, go to Projects tab, create a new project with the '+', and make Primary with checkbox. 
-7. Now go to **Export -> Import YOLO txt files**. Browse to your 'labels' folder and select "Open".
+7. Now go to **Export -> Import YOLO txt files**. Browse to your `labels` folder and select "Open".
 8. Edit boxes and labels as needed to create a groundtruth video.
 9. To save, select File -> Save, or in Settings, in the Label Fast tab, choose checkbox 'Autosave'.
 10. Select File -> Close folder when completed.
@@ -76,7 +76,7 @@ This means that in frame 1, an object with a track id 1 has a bounding box with 
 
 ## How to get HOTA scores
 1. If you look under `benchmark_eval/data/gt`, there should be a folder for your video sequence from the "How to get Ground Truth files" step. In this folder:
-    a. Add a folder called `img1` to hold all the video image frames (should be the original frames from 'images' folder in RectLabel step 1 above, no bounding boxes).
+    a. Add a folder called `img1` to hold all the video image frames (should be the original frames from `images` folder in RectLabel step 1 above, no bounding boxes).
     b. Create a `seqinfo.ini` file - the format is shown in [Tips](tips.md). The name should match the video sequence folder name, and the `imDir` should match the image directory name. Adjust frame rate, sequence length, image width, and image height accordingly. 
     c. There should already be a `gt` folder from the "How to get Ground Truth files" step. 
 2. Next, edit the `vidseq_names.txt` under `benchmark_eval/data/seqmaps`. The format should have "name" at the top, and then all the video sequences you would like to get the HOTA values for. An example can be seen in [Tips](tips.md).
