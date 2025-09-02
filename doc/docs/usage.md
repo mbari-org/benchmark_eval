@@ -44,9 +44,6 @@ The `data` folder is also not included in GitHub, it is available on Hugging Fac
 2. Go to `tracker_output.ipynb` and make sure you have the correct video sequence in the **Setting Variables cell**.
 3. Run the **Ground Truth cell** to add the track id to the YOLO txt files and generate `gt.txt file`. This will look for the "labels" folder you exported to `benchmark_eval/temp` and create a folder called `labels_w_trackid`. This folder will then be converted from YOLO to MOT Challenge format. The final ground truth file will be called `gt.txt` and the script will place it under `benchmark_eval/data/gt/{vid_seq_name}/gt/gt.txt`.
 
-!!! note
-    The `.pyenv/runs/detect` folder accumulates results from .
-
 ### What is the MOT Challenge format?
 
 The MOT Challenge file format is required for the metric calculation in TrackEval. The files from RectLabel are exported as YOLO txt files, so they need to be converted. 
@@ -71,8 +68,10 @@ This means that in frame 1, an object with a track id 1 has a bounding box with 
 2. Run the **Model + Tracker cell** to get the model detections and convert them from YOLO to MOT Challenge format. The final txt file should end up in `benchmark_eval/data/predictions/mot_challenge`
 
 !!! note
-    If an error occurs, double check the paths. There are folders being generated and folders that you add yourself, so it's possible paths were not correctly identified.
+    The `runs` folder accumulates results from Ultralytics detection & tracking. These files can be cleared out after the evaluation process is complete if you want to save space.
 
+!!! note
+    If an error occurs, double check the paths. There are folders being generated and folders that you add yourself, so it's possible paths were not correctly identified.
 
 ## How to get HOTA scores
 1. If you look under `benchmark_eval/data/gt`, there should be a folder for your video sequence from the "How to get Ground Truth files" step. In this folder:
