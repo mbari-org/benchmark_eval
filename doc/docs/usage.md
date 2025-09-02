@@ -9,7 +9,7 @@ The benchmark videos are too large to push to GitHub, so they are not included i
 3. Go to `tracker_output.ipynb` and set the video sequence, model, and tracker you are using in the **Setting Variables cell**. If you would like to edit the video paths or add new videos, edit the paths here. Run the **Defining Functions cell**.
 4. Run **Model + Tracker** cell to get YOLO labels. The model parameters can be adjusted here, e.g. `conf`, `iou`, and `imgsz`. If you are using Windows/Linux, change `device='mps'` to `device='cpu'` or `device='cuda'` (NVIDIA GPU). Tracker parameters can also be adjusted in the yaml file. Copy the `labels` folder from `/runs/detect/track/` directory into your `videos` folder which has `images` and `xml` folders.
 5. In RectLabel, go to "Open folder", select the `images` folder for the "Images folder" and the empty `xml` folder for the "Annotations folder" (Label format is PASCAL xml, sort images Numeric), then select 'OK'.
-6. Select Settings, go to Projects tab, create a new project with the '+', and make Primary with checkbox. 
+6. Select Settings, go to Projects tab, create a new project with the '+', and make Primary with checkbox. Objects can also be imported to this project with the **Export -> Import object names -> from a file** (e.g. a model names file), and add "track id" to each object in the Settings -> Objects tab, Attributes field by selecting the checkbox.
 7. Now go to **Export -> Import YOLO txt files**. Browse to your `labels` folder and select "Open".
 8. Edit boxes and labels as needed to create a groundtruth video.
 9. To save, select File -> Save, or in Settings, in the Label Fast tab, choose checkbox 'Autosave'.
@@ -40,9 +40,9 @@ videos
 
 The `data` folder is also not included in GitHub, it is available on Hugging Face "update link". If you have the `data` folder, place it under benchmark_eval. If not, create an empty `data` folder with an empty `gt` folder inside. In here, create a folder named after your `vidseq_name` and create another empty folder named `gt` inside (e.g., `benchmark_eval/data/gt/simple_mid/gt`).
 
-1. After you have cleaned up detections in RectLabel, go to **Export -> Export YOLO txt files**, and save them under the `temp` folder in `benchmark_eval`. You can delete the names file that RectLabel exports along with your labels (e.g., `mbari452k.yaml`).
+1. After you have cleaned up detections in RectLabel, go to **Export -> Export YOLO txt files**, and save them under the `temp` folder in `benchmark_eval`. You can delete the names file that RectLabel exports to temp folder (e.g., `mbari452k.yaml`).
 2. Go to `tracker_output.ipynb` and make sure you have the correct video sequence in the **Setting Variables cell**.
-3. Run the **Ground Truth cell** to add the track id to the YOLO txt files. This will look for the "labels" folder you exported to `benchmark_eval/temp` and create a folder called `labels_w_trackid`. This folder will then be converted from YOLO to MOT Challenge format. The final ground truth file will be called `gt.txt` and script will place it under `benchmark_eval/data/gt/{vid_seq_name}/gt/gt.txt`.
+3. Run the **Ground Truth cell** to add the track id to the YOLO txt files and generate `gt.txt file`. This will look for the "labels" folder you exported to `benchmark_eval/temp` and create a folder called `labels_w_trackid`. This folder will then be converted from YOLO to MOT Challenge format. The final ground truth file will be called `gt.txt` and the script will place it under `benchmark_eval/data/gt/{vid_seq_name}/gt/gt.txt`.
 
 !!! note
     The `.pyenv/runs/detect` folder accumulates results from .
