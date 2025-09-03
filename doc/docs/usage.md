@@ -2,7 +2,7 @@
 
 ## How to Annotate a Video in RectLabel Pro
 
-The benchmark videos are too large to push to GitHub, so they are not included in the repository. They are available on Hugging Face (https://huggingface.co/datasets/MBARI-org/DeepSea-MOT). If you have the videos, they should be located in a `videos` folder under `benchmark_eval`. If you don't have it, create an empty `videos` folder. Inside `videos`, create a folder for your video sequence and insert your video file here. To make a benchmark video out of a video sequence, you will need `images`, `labels`, and `xml` folders. 
+The benchmark videos are too large to push to GitHub, so they are not included in the repository. They are available on Hugging Face [https://huggingface.co/datasets/MBARI-org/DeepSea-MOT](https://huggingface.co/datasets/MBARI-org/DeepSea-MOT). If you have the videos, they should be located in a `videos` folder under `benchmark_eval`. If you don't have it, create an empty `videos` folder. Inside `videos`, create a folder for your video sequence and insert your video file here. To make a benchmark video out of a video sequence, you will need `images`, `labels`, and `xml` folders. 
 
 1. In RectLabel, select **File -> Convert video to image frames** and put the resulting frames into an `images` folder. 
 2. Create an empty `xml` folder. 
@@ -38,7 +38,7 @@ videos
 
 ## How to get Ground Truth files
 
-The `data` folder is also not included in GitHub, it is available on Hugging Face (https://huggingface.co/datasets/MBARI-org/DeepSea-MOT). If you have the `data` folder, place it under benchmark_eval. If not, create an empty `data` folder with an empty `gt` folder inside. In here, create a folder named after your `vidseq_name` and create another empty folder named `gt` inside (e.g., `benchmark_eval/data/gt/simple_mid/gt`).
+The `data` folder is also not included in GitHub, it is available on Hugging Face [https://huggingface.co/datasets/MBARI-org/DeepSea-MOT](https://huggingface.co/datasets/MBARI-org/DeepSea-MOT). If you have the `data` folder, place it under benchmark_eval. If not, create an empty `data` folder with an empty `gt` folder inside. In here, create a folder named after your `vidseq_name` and create another empty folder named `gt` inside (e.g., `benchmark_eval/data/gt/simple_mid/gt`).
 
 1. After you have cleaned up detections in RectLabel, go to **Export -> Export YOLO txt files**, and save them under the `temp` folder in `benchmark_eval`. You can delete the names file that RectLabel exports to temp folder (e.g., `mbari452k.yaml`).
 2. Go to `tracker_output.ipynb` and make sure you have the correct video sequence in the **Setting Variables cell**.
