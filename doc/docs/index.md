@@ -1,4 +1,4 @@
-This is MBARI documentation for creating benchmark datasets and evaluating models using HOTA.
+This is MBARI documentation for creating benchmark datasets and evaluating models using HOTA. MBARI benchmark_eval Github repository [here](https://github.com/mbari-org/benchmark_eval).
 
 A majority of the code in this repository is the [TrackEval GitHub repository](https://github.com/JonathonLuiten/TrackEval). I added a bit of code here and there and set up the directory structure to run the HOTA metric for MBARI's benchmark dataset and renamed it benchmark-eval. 
 
